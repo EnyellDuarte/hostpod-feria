@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Red WiFi Cecosesola</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta
+      name="viewport"
+      content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"
+    />
+    <link rel="stylesheet" href="login.css" media="screen" />
+  </head>
+  <body class="login">
+   
+
+    <script type="text/javascript" src="/md5.js"></script>
+    <script type="text/javascript">
+      
+
+      let dato = "";
+	  console.log("DATO",dato);
+      function doLogin() {
+        document.sendin.username.value = document.login.username.value;
+        document.sendin.password.value = hexMD5(
+          "$(chap-id)" + dato + "$(chap-challenge)"
+        );
+        document.sendin.submit();
+        return true;
+      }
+    
+    </script>
+
+    <form
+      class="vertical-form"
+      name="login"
+      action="$(link-login-only)"
+      method="post"
+      $(if
+      chap-id)
+      onSubmit="return doLogin()"
+      $(endif)
+    >
+     
+      
+      <legend class="legend">
+        <div id="logo"></div>
+      </legend>
+
+      <input
+        autofocus
+        name="username"
+        type="text"
+        value=""
+        placeholder="Usuario"
+        size="30"
+      />
+      <input type="submit" value=" " />
+      <div class="footer">
+        <p>Red WiFi de Cecosesola.</p>
+        <br />
+        <p></p>
+      </div>
+    </form>
+
+    
+    <script type="text/javascript">
+	  document.login.username.focus();
+      document.oncontextmenu = function () {
+        return false;
+      };
+    </script>
+  </body>
+</html>
